@@ -17,11 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
- Route::get('/create', 'RegistrationController@create');
- Route::post('/register','RegistrationController@registerUser');
-Route::get('/login','LoginController@loginPage');
-Route::get('/login-user','LoginController@loginUser');
+// Route::get('/create', 'RegistrationController@create');
 
-//Route::group(['namespace' => 'Registration'], function () {
-//    Route::get('create', 'RegistrationController@create');
-//});
+//routes for registration of user
+
+Route::group(['namespace' => 'Registration'], function () {
+    Route::get('/create', 'RegistrationController@create');
+    Route::post('/register', 'RegistrationController@registerUser');
+});
+
+//routes for login of user
+Route::group(['namespace' => 'Login'], function () {
+    Route::get('/login', 'LoginController@loginPage');
+    Route::post('/login-user', 'LoginController@loginUser');
+});

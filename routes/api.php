@@ -18,10 +18,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('create', 'RegistrationController@create');
-Route::post('register', 'RegistrationController@registerUser');
-Route::get('login', 'LoginController@login');
-Route::group(['namespace' => 'Login'], function () {
+//routes for user login
+//api/login
 
-//    Route::post('register','RegistrationController@registerUser');
+Route::group(['namespace' => 'Login'], function () {
+    Route::get('login', 'LoginController@login');
+
+});
+// api/register
+Route::group(['namespace' => 'Registration'], function () {
+    Route::post('register', 'RegistrationController@registerUser');
+
 });
